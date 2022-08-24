@@ -3,6 +3,27 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
 
+class SignUpSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def validate(self, attrs):
+        if User.objects.filter(username=attrs["email"]).exists():
+            raise serializers.ValidationError("Email must be unique")
+        return attrs
+
+    def save(self, **kwargs):
+        email = self.validated_data['email']
+        password = self.validated_data['password']
+        user = User(
+            username=email,
+            email=email,
+        )
+        user.set_password(password)
+        user.save()
+        return user
+
+
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
