@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     # third party apps
     'corsheaders',
     'django_filters',
-
+    'rest_framework',
+    'rest_framework.authtoken',
     # project apps
     'students',
     'teachers'

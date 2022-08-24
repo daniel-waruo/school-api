@@ -43,10 +43,11 @@ class SignUpView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = SignUpSerializer(data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(
                 data={
                     'message': 'Registration Successful',
-                    'data': serializer.save(),
+                    'data': serializer.data,
                     'success': True
                 }
             )

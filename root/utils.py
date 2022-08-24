@@ -14,4 +14,4 @@ class IsAuthenticatedOrOptions(BasePermission):
     def has_permission(self, request, view):
         if request.method in self.safe_methods:
             return True
-        return request.user.is_authenticated()
+        return request.user.is_authenticated
