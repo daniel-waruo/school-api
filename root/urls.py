@@ -25,6 +25,7 @@ urlpatterns = [
 
     # REST API endpoints
     path(f'api/{api_version}/students/', include("students.urls")),
+    path(f'api/{api_version}/teachers/', include("teachers.urls")),
     path(f'api/{api_version}/docs/',
          TemplateView.as_view(
              template_name='swagger-ui.html',
