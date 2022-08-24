@@ -1,0 +1,11 @@
+*.pyc
+.idea/
+client/management
+build/
+./media
+./static
+# .env
+venv/
+.vscode
+.env
+*.sqlite3
