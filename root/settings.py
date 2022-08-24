@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third party apps
-    'corsheaders'
+    'corsheaders',
+
+    # project apps
+    'students'
 ]
 
 MIDDLEWARE = [
