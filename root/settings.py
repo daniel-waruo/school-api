@@ -35,11 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # third party apps
     'corsheaders',
     'django_filters',
-
+    'rest_framework',
+    'rest_framework.authtoken',
+    'storages',
     # project apps
     'students',
     'teachers'
@@ -139,5 +140,25 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
     'DATETIME_FORMAT': "%a, %d %b %y %I:%M %p",
     'DATE_FORMAT': "%a, %d %b %Y"
-
 }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'apiKey': {
+            "type": "apiKey",
+            "name": "AUTHORIZATION",
+            "in": "header"
+        }
+    },
+    'SHOW_REQUEST_HEADERS': True,
+    'USE_SESSION_AUTH': False
+}
+
+AWS_ACCESS_KEY_ID = 'AKIA4JWY3RWF25SBG673'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'school-api-s3'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_QUERYSTRING_AUTH = False
