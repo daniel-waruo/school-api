@@ -25,8 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # REST API endpoints
-    path(f'api/{api_version}/students/', include("students.urls")),
-    path(f'api/{api_version}/teachers/', include("teachers.urls")),
+    path(f'api/{api_version}/', include("students.urls")),
+    path(f'api/{api_version}/', include("teachers.urls")),
     path(f'api/{api_version}/docs/',
          TemplateView.as_view(
              template_name='swagger-ui.html',
@@ -38,6 +38,7 @@ urlpatterns = [
         description="API for managing the entities in a school system",
         version="1.0.0",
         public=True,
+        # renderer_classes=[renderers.SwaggerUIRenderer]
     ), name='openapi-schema'),
     path("", lambda request: redirect(f'api/{api_version}/docs/'))
 ]

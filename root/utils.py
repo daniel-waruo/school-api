@@ -1,3 +1,4 @@
+from rest_framework import serializers
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import BasePermission
 
@@ -15,3 +16,8 @@ class IsAuthenticatedOrOptions(BasePermission):
         if request.method in self.safe_methods:
             return True
         return request.user.is_authenticated
+
+
+class SerializerImageCharField(serializers.CharField):
+    def to_representation(self, value):
+        return value.url
